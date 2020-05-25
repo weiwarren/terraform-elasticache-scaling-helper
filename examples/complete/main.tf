@@ -3,7 +3,6 @@ module "elasticache_redis" {
   name                  = "iconic-dev-elasticache"
   number_cache_clusters = 2
   node_type             = "cache.m3.medium"
-
   engine_version             = "5.0.0"
   port                       = 56379
   maintenance_window         = "mon:10:40-mon:11:40"
