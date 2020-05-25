@@ -1,5 +1,5 @@
 module "elasticache_redis" {
-  source                = "git::https://github.com/tmknom/terraform-aws-elasticache-redis"
+  source                = "git@github.com:weiwarren/terraform-aws-elasticache-redis.git"
   name                  = "iconic-dev-elasticache"
   number_cache_clusters = 2
   node_type             = "cache.m3.medium"
@@ -14,7 +14,7 @@ module "elasticache_redis" {
   apply_immediately          = true
   family                     = "redis5.0"
   description                = "This is a testing cluster"
-  notification_topic_arn     = module.elasticache_scaling_helper.sns.arn
+  notification_topic_arn     = module.elasticache_scaling_helper.aws_sns_arn
   subnet_ids         = module.vpc.public_subnet_ids
   vpc_id             = module.vpc.vpc_id
   source_cidr_blocks = [module.vpc.vpc_cidr_block]
@@ -22,7 +22,7 @@ module "elasticache_redis" {
 
 module "elasticache_scaling_helper"{
   source                = "../../"
-  cache_cluster_name          = "iconic-dev-elasticache"
+  cache_cluster_name    = "iconic-dev-elasticache"
   number_cache_clusters        = 2
   sqs_name = "elasticache-auto-scaler-sqs"
   sns_name = "elasticache-auto-scaler-sns"
