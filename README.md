@@ -4,7 +4,7 @@ Terraform module which creates Redis ElastiCache Dynamic Scaling Helper resource
 
 ## Description
 
-Provision 
+Provision elastic cacahe dynamic scaling module
 
 ## Usage
 
