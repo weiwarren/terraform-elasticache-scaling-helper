@@ -2,6 +2,10 @@ output "aws_sns_topic" {
   value = aws_sns_topic.default.name
 }
 
+output "aws_sns_arn" {
+  value = aws_sns_topic.default.arn
+}
+
 output "aws_sqs_queue" {
   value = aws_sqs_queue.default.id
 }

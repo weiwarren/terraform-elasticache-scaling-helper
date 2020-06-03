@@ -1,5 +1,5 @@
 module "elasticache_redis" {
-  source                = "git@github.com:weiwarren/terraform-aws-elasticache-redis.git"
+  source                = "git@github.com:weiwarren/terraform-aws-elasticache-redis.git?ref=tags/v0.1"
   name                  = "iconic-dev-elasticache"
   number_cache_clusters = 2
   node_type             = "cache.m3.medium"
@@ -18,6 +18,12 @@ module "elasticache_redis" {
   subnet_ids         = module.vpc.public_subnet_ids
   vpc_id             = module.vpc.vpc_id
   source_cidr_blocks = [module.vpc.vpc_cidr_block]
+   tags = {
+    Application = "elasticache-auto-scaler"
+    Owner       = "Devops"
+    Environment = "dev"
+    Project     = "elasticache-auto-scaler"
+  }
 }
 
 module "elasticache_scaling_helper"{
